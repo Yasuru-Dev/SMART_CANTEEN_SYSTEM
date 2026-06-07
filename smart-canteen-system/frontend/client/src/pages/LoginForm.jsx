@@ -12,7 +12,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-    const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+    const BASE_URL = import.meta.env.VI0TE_API_BASE_URL;
 
   // RESET KEY MODAL STATES
   const [showResetModal, setShowResetModal] = useState(false);
