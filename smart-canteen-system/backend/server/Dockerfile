@@ -2,11 +2,14 @@ FROM node:18
 
 WORKDIR /app
 
-COPY package*.json ./
+# Copy package.json from correct path
+COPY backend/server/package.json ./
+COPY backend/server/package-lock.json ./
 
 RUN npm install
 
-COPY . .
+# Copy all server files
+COPY backend/server/ .
 
 EXPOSE 5000
 
