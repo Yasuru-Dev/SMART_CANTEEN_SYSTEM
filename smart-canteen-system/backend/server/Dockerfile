@@ -10,4 +10,4 @@ COPY backend/server/ .
 
 EXPOSE 5000
 
-CMD ["node", "server.js"]
+CMD ["node", --experimental-global-webcrypto server.js"]
