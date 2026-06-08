@@ -6,7 +6,7 @@ const saleRoutes = require('./routes/saleRoutes');
 
 const app = express();
 
-// 1. Force open CORS globally for ALL methods, including preflight OPTIONS
+// CORS
 app.use(cors({
     origin: '*', 
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -15,15 +15,15 @@ app.use(cors({
 
 app.use(express.json());
 
-// 2. Explicitly catch and return 200 OK for browser preflight OPTIONS checks
-app.options('*', cors()); 
+// ✅ FIXED - Express 5 syntax
+app.options('/{*any}', cors());
 
-// 3. Application Routes
+// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/items', itemRoutes);
 app.use('/api/sales', saleRoutes);
 
-// 4. Global Error Handler
+// Error Handler
 app.use((err, req, res, next) => {
     const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
     res.status(statusCode).json({
